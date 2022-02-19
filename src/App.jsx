@@ -17,9 +17,14 @@ export default class App extends Component {
   menuItems = ['Home', 'Marketplace', 'Cart', 'Login']
 
   handleSubmitNumber = (contador) => {
-    this.setState({
-      numerosRegistrados: [...this.state.numerosRegistrados, contador]
+    const existeNum = this.state.numerosRegistrados.some(num => {
+      return num === contador
     })
+    if (!existeNum) {
+      this.setState({
+        numerosRegistrados: [...this.state.numerosRegistrados, contador]
+      })
+    }
   }
 
   render() {
