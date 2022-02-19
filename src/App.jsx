@@ -28,12 +28,18 @@ export default class App extends Component {
         <Navbar items={this.menuItems} />
         <Clock />
         <Contador valorInicial={50} handleSubmitNumber={(contador) => this.handleSubmitNumber(contador)} />
-        <h3>Numeros registrados:</h3>
-        <ul>
-          {this.state.numerosRegistrados.map((num, i) => {
-            return <li key={i}>{num}</li>
-          })}
-        </ul>
+
+        {/* {(this.state.numerosRegistrados.length !== 0) && */}
+        {(!!this.state.numerosRegistrados.length) &&
+          (<>
+            <h3>Numeros registrados:</h3>
+            <ul>
+              {this.state.numerosRegistrados.map((num, i) => {
+                return <li key={i}>{num}</li>
+              })}
+            </ul>
+          </>)
+        }
         {/* <Saludo nombre={'Pepe'} edad={32} apellido={'Gomez'} /> */}
         <Footer />
       </>
