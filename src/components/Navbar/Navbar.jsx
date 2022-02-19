@@ -3,8 +3,8 @@ const Navbar = props => {
     return <>
         <ul>
             {
-                items.map((item) => {
-                    return <li>{item}</li>
+                items.map((item, i) => {
+                    return <li key={i}>{item}</li>
                 })
             }
         </ul>

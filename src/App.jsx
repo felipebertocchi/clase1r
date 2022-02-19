@@ -7,10 +7,19 @@ import Contador from './components/Contador/Contador';
 
 export default class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      numerosRegistrados: []
+    }
+  }
+
   menuItems = ['Home', 'Marketplace', 'Cart', 'Login']
 
   handleSubmitNumber = (contador) => {
-    console.log(contador)
+    this.setState({
+      numerosRegistrados: [...this.state.numerosRegistrados, contador]
+    })
   }
 
   render() {
@@ -19,7 +28,13 @@ export default class App extends Component {
         <Navbar items={this.menuItems} />
         <Clock />
         <Contador valorInicial={50} handleSubmitNumber={(contador) => this.handleSubmitNumber(contador)} />
-        <Saludo nombre={'Pepe'} edad={32} apellido={'Gomez'} />
+        <h3>Numeros registrados:</h3>
+        <ul>
+          {this.state.numerosRegistrados.map((num, i) => {
+            return <li key={i}>{num}</li>
+          })}
+        </ul>
+        {/* <Saludo nombre={'Pepe'} edad={32} apellido={'Gomez'} /> */}
         <Footer />
       </>
     )
